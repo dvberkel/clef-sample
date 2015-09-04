@@ -1,0 +1,23 @@
+{
+  "name": "clef-sample",
+  "version": "1.0.0",
+  "description": "Sample application to test clef",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dvberkel/clef-sample.git"
+  },
+  "author": "Daan van Berkel <daan.v.berkel.1980@gmail.com> (http://dvberkel.nl/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dvberkel/clef-sample/issues"
+  },
+  "homepage": "https://github.com/dvberkel/clef-sample",
+  "devDependencies": {
+    "nodemon": "^1.4.1"
+  }
+}
