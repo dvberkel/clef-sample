@@ -5,21 +5,29 @@ var clef = require('clef').initialize({ 'appID': app.id, 'appSecret': app.secret
 
 var app = express();
 
-app.use('/public', express.static('static'));
-app.get('/', function(request, response){
-    var url_data = url.parse(request.url);
-    var query_data = qs.parse(url_data.query);
-    console.log(query_data);
 
-    clef.getLoginInformation({ code: query_data.code }, function(error, info){
+var default_user = {}
+var user = default_user;
+
+app.use(function(request, response, next){
+    console.log('%s', request.url);
+    next();
+});
+app.use('/', express.static('static'));
+app.get('/user', function(request, response){
+    response.json(user);
+});
+app.get('/login', function(request, response){
+    clef.getLoginInformation({ code: request.query.code }, function(error, info){
         if (error) {
-            response.statusCode = 500;
-            response.end();
+            user = default_user;
+            response.redirect('/');
+            return;
         }
 
         console.log(info);
-        response.statusCode = 200;
-        response.end();
+        user = info;
+        response.redirect('/');
     });
 });
 
