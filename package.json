@@ -19,5 +19,9 @@
   "homepage": "https://github.com/dvberkel/clef-sample",
   "devDependencies": {
     "nodemon": "^1.4.1"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "serve-static": "^1.10.0"
   }
 }

@@ -1,11 +1,12 @@
-var http = require('http');
-var url = require('url');
-var qs = require('querystring');
+var express = require('express');
 
 var app = require('./app.json');
 var clef = require('clef').initialize({ 'appID': app.id, 'appSecret': app.secret });
 
-var server = http.createServer(function(request, response){
+var app = express();
+
+app.use('/public', express.static('static'));
+app.get('/', function(request, response){
     var url_data = url.parse(request.url);
     var query_data = qs.parse(url_data.query);
     console.log(query_data);
@@ -22,4 +23,6 @@ var server = http.createServer(function(request, response){
     });
 });
 
-server.listen(80);
+var server = app.listen(80, function(){
+    console.log('listening on http://localhost');
+});
