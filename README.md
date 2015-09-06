@@ -10,3 +10,9 @@ The `server.js` relies on a `app.json` that holds the identity tokens for the ap
     "secret": "YOUR-APP-SECRET"
 }
 ```
+
+start the server with
+
+```js
+node server.js
+```
